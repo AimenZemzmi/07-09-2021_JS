@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 5</title>
+</head>
+<body>
+    <button style="height: 30px;">
+        <div style="background-color: black; height: 3px; width: 30px; margin-bottom: 3px;"></div>
+        <div style="background-color: black; height: 3px; width: 30px; margin-bottom: 3px;"></div>
+        <div style="background-color: black; height: 3px; width: 30px;"></div>
+    </button>
+
+    <div id="menu">
+        <ul>
+            <li>
+                Voiture
+            </li>
+            <li>
+                Camion
+            </li>
+            <li>
+                Moto
+            </li>
+        </ul>
+    </div>
+
+    <h1>Exercice 5</h1>
+
+    <script>
+        // on selectionne le menu et on le met son display à none
+        let menu = document.querySelector('#menu');
+        menu.style.display = "none";
+
+        // On selectionne le bouton et on écoute l'évenement click
+        document.querySelector('button').addEventListener('click', (e) => {
+            let res = e.target.classList.toggle('c');
+            if (res) {
+                // menu visible
+                menu.style.display = "block";
+            } else {
+                // menu pas visible
+                menu.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

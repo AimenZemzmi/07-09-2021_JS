@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 4</title>
+</head>
+<body>
+    <h1>Exercice 4</h1>
+    
+    <button type="button">Dark Mode</button>
+
+    <script>
+        // On selectionne le bouton et on écoute l'évenement click
+        document.querySelector('button').addEventListener('click', (e) => {
+
+            // On récupère body, le bouton et on fait un toggle
+            let body = document.querySelector('body');
+            let btnMode = document.querySelector('button');
+            let res = e.target.classList.toggle('c');
+            
+            if (res) {
+                // Ici on rend le fond en noir et l'écriture en blanc
+                body.style.backgroundColor = "black";
+                body.style.color = "white";
+                btnMode.textContent = "White Mode";
+            } else {
+                // Ici on rend le fond en blanc et l'écriture en noir
+                body.style.backgroundColor = "white";
+                body.style.color = "black";
+                btnMode.textContent = "Dark Mode";
+            }
+        });
+    </script>
+</body>
+</html>

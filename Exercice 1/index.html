@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 1</title>
+</head>
+<body>
+    <h1>Exercice 1</h1>
+
+    <div class="divGenerateur">
+
+    </div>
+
+    <button>Génération de mot de passe</button>
+
+    <script>
+        // Function getPassword qui permet de créer un mot de passe
+        function getPassword() {
+            // On initialise les différents caractères minuscule, majuscule ainsi que les chiffres et les caractères spéciaux puis on les concatenes
+            let lettersLowerCase = 'abcdefghijklmnopqrstuvwxyz';
+            let lettersUpperCase = lettersLowerCase.toUpperCase();
+            let numbers = '0123456789';
+            let specials = "`~!@#$%^&*()-_=+[{]}\\|;:'\",<.>/? ";
+            let allCharacter = lettersLowerCase + lettersUpperCase + numbers + specials;
+
+            // On défini la longueur du mot de passe à 15 et le resultat à rien
+            let lengthOfPassword = 15;
+            let result = '';
+
+            // Boucle de 0 à la longueur donnée juste au dessus puis dedans on récupérer une position random dans la variable allCharacter
+            // Suite à ça on concatene la variable result aux différentes lettres/chiffres/caractères à l'aide de la position récupèrer précédement
+            for(i = 0; i < lengthOfPassword; i++) {
+                let position = Math.round(Math.random() * allCharacter.length);
+                result += allCharacter.substring(position, position + 1);
+            }
+            return result;
+        }
+
+        document.querySelector('button').addEventListener('click', () => {
+            // supprimer l'ancien paragraphe si existant
+            if (document.querySelector('p')) {
+                document.querySelector('p').remove();
+            }
+            // On récupère le div puis on stock le resultat de la fonction dans une variable password
+            let divGenerateur = document.querySelector('.divGenerateur');
+                    let password = getPassword();
+            
+            // On créer une balise p et on met un texte avec le password puis on ajoute ceci à la div
+            let paragraphe = document.createElement('p');
+            paragraphe.textContent = `Votre mot de passe est : ${password}`;
+            divGenerateur.appendChild(paragraphe);
+        });
+
+        
+    </script>
+</body>
+</html>

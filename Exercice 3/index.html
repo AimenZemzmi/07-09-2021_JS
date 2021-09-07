@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 3</title>
+</head>
+<body>
+    <h1>Exercice 3</h1>
+    
+    <button id="btnCitation" type="button">Citation</button>
+
+    <div id="modal" class="modal">
+        <div class="modalDiv">
+            <span class="close">X</span>
+        </div>
+    </div>
+
+    <script>
+        // On rempli un donnée de citations
+        const citationsTable = [
+            'Un seul être vous manque et tout est dépeuplé',
+            'Les seuls beaux yeux sont ceux qui vous regardent avec tendresse',
+            'Je ne cherche pas à connaître les réponses, je cherche à comprendre les questions',
+            'Choisissez un travail que vous aimez et vous n\'aurez pas à travailler un seul jour de votre vie',
+            'Le travail, c\'est le refuge des gens qui n\'ont rien de mieux à faire',
+            'L\'expérience prouve que celui qui n\'a jamais confiance en personne ne sera jamais déçu',
+            'L\'oisiveté est la mère de tous les vices'
+        ];
+
+        // Pour la fonction on récupère une position aléatoire dans le tableau puis on récupère la citation choisi
+        function getCitation() {
+            let positionCitations = Math.round(Math.random() * citationsTable.length);
+            return citationsTable[positionCitations];
+        }
+        
+
+        // On selectionne la modal et on créer la balise p, aussi on met le style display de la modal à none
+        let modal = document.querySelector('.modal');
+        let citationInModal = document.createElement('p');
+
+        modal.style.display = 'none';
+
+
+        // Pour les deux addEventListener l'un est sur le bouton citation quand on click on affiche la modal, on lui donne la citation et on l'append
+        // du style sur le body pour faire la distinction
+        document.querySelector('#btnCitation').addEventListener('click', () => {
+            modal.style.display = "block";
+            citationInModal.textContent = getCitation();
+            document.querySelector('.modalDiv').appendChild(citationInModal);
+            document.querySelector('body').style.backgroundColor = "lightGrey";
+            document.querySelector('#btnCitation').disabled = true;
+        });
+
+        // le deuxième c'est sur le span close ça aurait pu être un bouton mais la j'ai choisi ça pour changé un peu, quand on click on fait l'inverse
+        // suppression  de la citation et modal qui redevient non visible
+        document.querySelector('.close').addEventListener('click', () => {
+            modal.style.display = "none";
+            document.querySelector('body').style.backgroundColor = "white";
+            citationInModal.remove();
+            document.querySelector('#btnCitation').disabled = false;
+        });
+    </script>
+
+    <style>
+        .modal {
+            text-align: center;
+            width: 50%;
+            background-color: white;
+            margin: auto;
+        }
+        .close {
+            cursor: pointer;
+        }
+    </style>
+</body>
+</html>

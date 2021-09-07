@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 2</title>
+</head>
+<body>
+    <h1>Exercice 2</h1>
+    
+    <input type="number"/>
+    <span>Celsius</span>
+    <button type="button">En Fahrenheit</button>
+
+    <script>
+        // Pour la fonction celsius c'est un calcul fahrenheit vers celsius
+        function celsius(value) {
+            return value * 9 / 5 + 32;
+        }
+        
+        // Pour la fonction fahrenheit c'est un calcul celsius vers fahrenheit
+        function fahrenheit(value) {
+            return (value - 32) * 5 / 9;
+        }
+
+        // on récupère le bouton pour l'écouter son evenement click
+        document.querySelector('button').addEventListener('click', (e) => {
+
+            // On récupère input et le span pour le changer plus tard
+            let input = document.querySelector('input');
+            let span = document.querySelector('span');
+
+            // un toggle sur l'évenement cliqué
+            let res = e.target.classList.toggle('c');
+            if (res) {
+                // Ici on execute la fonction celsius en donnant la valeur Celsius pour avoir en Fahrenheit
+                // On modifie l'input, le span et le texte du bouton
+                input.value = celsius(input.value);
+                span.textContent = "Fahrenheit";
+                document.querySelector('button').textContent = "En Celsius";
+            } else {
+                // Ici on execute la fonction fahrenheit en donnant la valeur Fahrenheit pour avoir en Celsius
+                // On modifie l'input, le span et le texte du bouton
+                input.value = fahrenheit(input.value);
+                span.textContent = "Celsius";
+                document.querySelector('button').textContent = "En Fahrenheit";
+            }
+            
+        });
+        
+    </script>
+</body>
+</html>
